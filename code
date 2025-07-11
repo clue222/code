@@ -1,0 +1,16 @@
+Overlay.clear;							// clear any overlay
+Roi.getBounds(x, y, width, height);		// get bounds of ROI drawn by user
+r = height/2;							// radial length of spoke
+xc = getValue("XM");
+yc = getValue("YM");
+//xc = x + (width/2);					// geometric centre
+//yc = y + (height/2);						
+
+for(i=0; i<10; i++){					// 10 steps
+	ang = (i /10) * 2*PI;				// calculate angle
+	xe = xc + r * Math.cos(ang);		// calculate x endpoint
+	ye = yc + r * Math.sin(ang);		// calculate y endpoint
+	makeLine(xc, yc, xe, ye);			// make a line
+	Overlay.addSelection;				// ... and add it to the overlay
+}
+Overlay.show;							// show the overlay
